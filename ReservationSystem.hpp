@@ -1,25 +1,32 @@
-#ifndef RESERVATIONSYSTEM_HPP
-#define RESERVATIONSYSTEM_HPP
+#ifndef RESERVATION_SYSTEM_HPP
+#define RESERVATION_SYSTEM_HPP
 
-#include <iostream>
 #include <string>
 #include "ReservationRequest.hpp"
 
-struct Reservation{
-    std::string course_name;
-    std::string weekday;
-    int start_hour;
-    int end_hour;
-    int student_count;
+class Room {
+private:
+    int room_capacity;
+    ReservationRequest** reserved;
+    int num_reservations;
+    int array_size;
+
+public:
+    Room();
+    ~Room();
+
+    void setCapacity(int cap);
+    int dayToInt(std::string day);
+    bool addReservation(ReservationRequest request);
+    bool removeReservation(std::string course_name);
+    void printRoomSchedule();
 };
 
 class ReservationSystem {
-
 private:
     int room_count;
     int* room_capacities;
-    Reservation* lista_reservas;
-
+    Room* rooms;
 
 public:
 

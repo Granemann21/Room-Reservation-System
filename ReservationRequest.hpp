@@ -1,9 +1,7 @@
-#ifndef RESERVATIONREQUEST_HPP
-#define RESERVATIONREQUEST_HPP
+#ifndef RESERVATION_REQUEST_HPP
+#define RESERVATIONRE_QUEST_HPP
 
-#include <iostream>
 #include <string>
-
 
 class ReservationRequest {
 
