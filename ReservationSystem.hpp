@@ -4,6 +4,7 @@
 #include <string>
 #include "ReservationRequest.hpp"
 
+// Classe auxiliar Room
 class Room {
 private:
     int room_capacity;
@@ -35,11 +36,7 @@ public:
 
     bool reserve(ReservationRequest request);
     bool cancel(std::string course_name);
-
     void printSchedule();
-
-    // Outros métodos utilitários necessários
-    // para auxiliar nas funções requisitadas
 };
 
 #endif

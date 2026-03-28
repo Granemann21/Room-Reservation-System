@@ -1,5 +1,5 @@
 #ifndef RESERVATION_REQUEST_HPP
-#define RESERVATIONRE_QUEST_HPP
+#define RESERVATION_REQUEST_HPP
 
 #include <string>
 
