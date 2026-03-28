@@ -1,18 +1,25 @@
-#ifndef RESERVATION_SYSTEM_HPP
-#define RESERVATION_SYSTEM_HPP
+#ifndef RESERVATIONSYSTEM_HPP
+#define RESERVATIONSYSTEM_HPP
 
+#include <iostream>
 #include <string>
 #include "ReservationRequest.hpp"
-using namespace std;
+
+struct Reservation{
+    std::string course_name;
+    std::string weekday;
+    int start_hour;
+    int end_hour;
+    int student_count;
+};
 
 class ReservationSystem {
 
 private:
     int room_count;
     int* room_capacities;
+    Reservation* lista_reservas;
 
-    // Estruturas internas escolhidas pelos alunos
-    // para armazenar e gerenciar as reservas, os horários, ...
 
 public:
 
