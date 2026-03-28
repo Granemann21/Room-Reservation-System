@@ -36,6 +36,11 @@ int Room::dayToInt(string day) {
 };
 
 bool Room::addReservation(ReservationRequest request) {
+    // Varificacao de erro nos horarios inseridos
+    if (request.getStartHour() < 7 || request.getEndHour() > 21 
+    || request.getEndHour() <= request.getStartHour()) {
+        return false; 
+    }
 
     // Verifica conflitos de horario
     for (int i = 0; i < this->num_reservations; i++) {
