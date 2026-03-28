@@ -93,12 +93,59 @@ bool Room::addReservation(ReservationRequest request) {
 
 bool Room::removeReservation(string course_name) {
 
+    // Verificar se existe essa reversa pra esse curso nessa sala
+    int pos = 0;
+    while (pos < this->num_reservations) {
+    // Se encontra já deleta 
+    if (this->reserved[pos]->getCourseName() == course_name) {
+        break;
+    }
+    pos++;
+    }
+    // Vai retonar falso se passou por todas as salas e não encontrou o nome do curso
+    if (pos==this->num_reservations) {
+        return false;
+    }
+
+    // Remove a reserva
+    delete this->reserved[pos];
+    
+    // Agora vamos passar todos as reservas que estavam à direita da reserva removida uma casa para a esquerda
+    for(int i = pos; i < this->num_reservations; i++) {
+        this->reserved[pos] = this->reserved[pos + 1];
+    }
+
+    this->num_reservations--;
+
+
 };
 
 void Room::printRoomSchedule() {
 
-};
+    std::string arr_days[5] = {"segunda", "terca", "quarta", "quinta", "sexta"};
 
+    // Itera em cada dia da semana
+    for (int i = 0; i < 5; i++) {
+
+        cout << arr_days[i] << endl;
+
+        // Itera em todas as reservas
+        for (int j = 0; j < this->num_reservations; j++) {
+
+            // Se o dia em forma de inteiro for maior que o i + 1 (dia inteiro atual) 
+            // já vai para o próximo dia da semana.
+            if (this->dayToInt(this->reserved[j]->getWeekday()) > i + 1){
+                break;
+            }
+
+            // Printa todos as aulas daquele dia
+            if (this->dayToInt(this->reserved[j]->getWeekday()) == i + 1){
+                cout << this->reserved[j]->getStartHour() << "h~" << this->reserved[j]->getEndHour() << "h: " << 
+                this->reserved[j]->getCourseName() << endl; 
+            }   
+        }
+    }
+};
 
 
 ReservationSystem::ReservationSystem(int room_count, int* room_capacities){
