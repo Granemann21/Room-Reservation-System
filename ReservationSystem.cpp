@@ -48,7 +48,7 @@ bool Room::addReservation(ReservationRequest request) {
             }
         }
     }
-
+    
     // Verifica se cabe mais reservas no array
     if (this->num_reservations == this->array_size) {
         int new_size = this->array_size * 2;
